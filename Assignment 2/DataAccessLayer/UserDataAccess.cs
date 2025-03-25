@@ -13,7 +13,6 @@ namespace Assignment_2.DataAccessLayer
     {
         public Boolean GetUser(string usernameI, string passwordI)
         {
-
             List<User> products = new List<User>();
             String connString = ConfigurationManager.ConnectionStrings["connString"].ToString();
             SqlConnection sqlConnection = new SqlConnection(connString);
@@ -27,32 +26,39 @@ namespace Assignment_2.DataAccessLayer
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    while (reader.Read()) // Reads the first row of the result set
+                    if (reader.Read()) // Reads the first row of the result set
                     {
-                        User.Add(new User
+                        /*User.Add(new User
                         {
                             customer_id = Int32.Parse(reader["customer_id"].ToString()),
                             customer_name = reader["customer_name"].ToString(),
                             customer_email = reader["customer_email"].ToString()
 
-                        });
+                        });*/
                         return true;
-
                     }
                     reader.Close();
-
                 }
-
                 sqlConnection.Close();
             }
-
             catch (Exception e)
             {
                 sqlConnection.Close();
             }
-
             return true;
-
         }
+
+        public void AddCustomer(int customer_id, strong customer_name, string customer_email)
+        {
+            String connString = ConfigurationManager.ConnectionStrings["connString"].ToString();
+            SqlConnection sqlConnection = new SqlConnection(connString);
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand cmd = new SqlCommand();
+                sqlConnection.Close();
+            }
+        }
+
     }
 }
