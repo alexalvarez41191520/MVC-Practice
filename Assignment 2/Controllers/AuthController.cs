@@ -16,7 +16,7 @@ namespace Assignment_2.Controllers
         }
 
         [HttpPost]
-        public ActionResult User(string txtName, string txtPassword)
+        public ActionResult Username(string txtName, string txtPassword)
         {
             string returnedmsg;
             Boolean fromgetuser = false;

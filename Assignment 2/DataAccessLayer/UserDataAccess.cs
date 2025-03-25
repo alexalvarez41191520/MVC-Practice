@@ -51,7 +51,7 @@ namespace Assignment_2.DataAccessLayer
                 sqlConnection.Close();
             }
 
-            return;
+            return true;
 
         }
     }
